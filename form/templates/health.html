@@ -22,14 +22,20 @@
     </thead>
     <tbody>
     {% for url in url_list %}
-        <tr id="url_{{ url_list.index(url) }}"><td><a href="{{ url }}" target="_blank">{{ url }}</a></td><td></td><td></td><td><form id="add_url_form" action="/health" method="POST"><button name="delete_url" value="{{ url_list.index(url) }}" type="submit">x</button></form></td></tr>
+        <tr id="url_{{ url_list.index(url) }}"><td><a href="{{ url }}" target="_blank">{{ url }}</a></td><td></td><td></td><td><form id="delete_url_form_{{ url_list.index(url) }}" action="/health" method="POST"><button name="delete_url" id="delete_button_{{ url_list.index(url) }}" value="{{ url_list.index(url) }}"  class="delete-button"  type="submit">x</button></form></td></tr>
     {% endfor %}
     </tbody>
 </table>
 
-<form id="add_url_form" action="/health" method="POST">
-        <input type="text" name="urls" placeholder="URL"/>
-        <input type="submit" name="submit"/>
+<form id="add_url_form" action="/health" method="POST" style="margin-top: 1rem;" >
+        <input type="text" name="url" placeholder="URL"/>
+        <!-- <input type="submit" name="submit"/> -->
+    <button name="add_url_submit" type="submit">add URL</button>
+</form>
+<form id="set_interval_form" action="/health" method="POST" style="margin-top: 2rem;" >
+        <input type="text" name="interval" placeholder="(seconds)" style="max-width: 4rem"/>
+        <!-- <input type="submit" name="submit"/> -->
+    <button name="set_interval_submit" type="submit">set interval</button>
 </form>
 </body>
 </html>

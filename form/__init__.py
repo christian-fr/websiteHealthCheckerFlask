@@ -48,7 +48,7 @@ def delete_url_index(index: int) -> None:
 
 def upload_dir():
     p = Path(app.config['upload_dir'].name)
-    if not p.exists():  
+    if not p.exists():
         p.mkdir(parents=True, exist_ok=True)
 
     return p
@@ -105,7 +105,7 @@ def health():
 def add_url():
     pass
     if 'url' in request.form:
-        url = request.form['urls']
+        url = request.form['url']
         url_parsed = urlparse(url.encode('utf-8'))
         if url_parsed.scheme in [b'https', b'http'] and url_parsed.hostname is not None:
             if url not in urls_list():
@@ -195,6 +195,7 @@ def main():
         if 'upload_dir' in app.config:
             app.config['upload_dir'].cleanup()
 
+check_config()
 
 if __name__ == '__main__':
     main()

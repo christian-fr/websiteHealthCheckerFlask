@@ -38,6 +38,10 @@ function trigger_process(file_ids) {
 }
 
 
+function delete_button() {
+
+}
+
 function submit_form() {
     var form = $('#add_url_form')[0]
     form_data = new FormData(form);
@@ -69,6 +73,10 @@ function submit_form() {
 $( document ).ready(function() {
     $('#upload_button').click(function() {
         submit_form()
+    });
+
+    $('.delete-button').click(function() {
+        delete_url()
     });
 
     $('#process_button').click(function() {
